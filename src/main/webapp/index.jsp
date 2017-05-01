@@ -8,6 +8,6 @@
         <title>Library Backend Server Page</title>
     </head>
     <body>
-        <h1><b>... Library Backend Server is running ...</b></h1>
+        <h1><b>... Library Backend Server is running on Bluemix ...</b></h1>
     </body>
 </html>
