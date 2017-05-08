@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -23,6 +24,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 import com.cloudant.client.api.Database;
+import com.cloudant.client.api.Search;
 
 import javax.ws.rs.core.Response.Status;
 
@@ -62,6 +64,17 @@ public class CustomerResource {
 			e.printStackTrace();
 			return null;
 		}
+	}
+	
+	@Path("/user/{email}")
+	@GET
+	public List<Customer> getUser(@PathParam("email") String email){
+		initDatabasec();
+		List<Customer> list = null;
+		Search searchObject = dbCustomers.search("CustomerIdx/emailSearch");
+		list = searchObject.includeDocs(true).query(email, Customer.class);
+		System.out.println(list);
+		return list;
 	}
 	
 	@Path("/{id}")
