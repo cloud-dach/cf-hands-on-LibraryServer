@@ -68,22 +68,24 @@ public class CustomerResource {
 	
 	@Path("/user/{email}")
 	@GET
-	public Customer getUser(@PathParam("email") String email){
+	public List<Customer> getUser(@PathParam("email") String email){
 		initDatabasec();
 		List<Customer> list = null;
 		Search searchObject = dbCustomers.search("CustomerIdx/emailSearch");
 		list = searchObject.includeDocs(true).query(email, Customer.class);
-		System.out.println("search return"+ list);
 		boolean isContained = false;
 		Customer rightOne = null;
-		for(Customer curr : list){
-			if(curr.getEmail().equals(email)) {
+		int i = 0;
+		while(!list.isEmpty() && i<list.size()){
+			if(list.get(i).getEmail().equals(email)){
 				isContained = true;
-				rightOne = curr;
-				break;
+				rightOne = list.get(i);
+				i++;
+			} else {
+				list.remove(i);
 			}
 		}
-		return rightOne;
+		return list;
 	}
 	
 	@Path("/{id}")
