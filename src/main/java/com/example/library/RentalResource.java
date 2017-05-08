@@ -27,6 +27,7 @@ import javax.ws.rs.core.UriInfo;
 import org.json.JSONObject;
 
 import com.cloudant.client.api.Database;
+import com.cloudant.client.api.Search;
 
 import javax.ws.rs.core.Response.Status;
 
@@ -46,6 +47,15 @@ public class RentalResource {
     	try {
 			Collection<Rental> allRentals = dbRentals.getAllDocsRequestBuilder().includeDocs(true).build()
 					.getResponse().getDocsAs(Rental.class);
+			
+			LinkedList<Rental> removeable = new LinkedList<Rental>();
+			for(Rental temp : allRentals){
+				if(temp.getId()==null){
+					removeable.add(temp);
+				}
+			}
+			allRentals.removeAll(removeable);
+			
 			RentalShow[] toShow = new RentalShow[allRentals.size()];
 			Iterator<Rental> it = allRentals.iterator();
 			int i=0;
@@ -71,6 +81,36 @@ public class RentalResource {
 			return null;
 		}
 	}
+	
+	@Path("/user/{customerid}")
+	@GET
+	public RentalShow[] getUserRentals(@PathParam("customerid") String customerid, @Context UriInfo uriInfo){
+		Collection<Rental> userRentals = null;
+		Search searchObject = dbRentals.search("RentalIdx/customerSearch");
+		userRentals = searchObject.includeDocs(true).query(customerid, Rental.class);
+		
+		
+		RentalShow[] toShow = new RentalShow[userRentals.size()];
+		Iterator<Rental> it = userRentals.iterator();
+		int i=0;
+		while(it.hasNext()){
+			Rental current = it.next();
+			
+		    URI uribook = URI.create(uriInfo.getBaseUri().toString() + "books/"
+					+ current.getBookid());
+		    //System.out.println("uri book: "+uribook.toString());
+		    URI uricustomer = URI.create(uriInfo.getBaseUri().toString() + "customers/"
+					+ current.getCustomerid());
+			//System.out.println("uri customer: "+uricustomer.toString());
+			String startFormat = dt.format(current.getStart());
+			String endFormat = dt.format(current.getEnd());
+			RentalShow temp = new RentalShow(current.getId(),uribook.toString(),uricustomer.toString(),startFormat,endFormat);
+			toShow[i]=temp;
+			i++;
+		}
+		return toShow;
+	}
+	
 	
 	@Path("/{id}")
 	@GET
