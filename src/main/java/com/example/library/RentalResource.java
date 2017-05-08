@@ -154,6 +154,7 @@ public class RentalResource {
 	}
 	
 	
+	
 	//Update rental
 	@Path("/{id}")
 	@PUT
