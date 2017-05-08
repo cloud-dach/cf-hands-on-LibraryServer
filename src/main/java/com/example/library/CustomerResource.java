@@ -86,6 +86,7 @@ public class CustomerResource {
 			}
 		}
 		return list;
+		
 	}
 	
 	@Path("/{id}")
