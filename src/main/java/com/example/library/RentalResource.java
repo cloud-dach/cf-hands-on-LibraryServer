@@ -161,7 +161,7 @@ public class RentalResource {
 		if(dbRentals.contains(id)){
 			if(rental.getId().equals(id)){
 				Rental indb = dbRentals.find(Rental.class, id);
-				indb.setBookid(rental.getBookid());
+				//indb.setBookid(rental.getBookid());
 				indb.setCustomerid(rental.getCustomerid());
 				indb.setStart(rental.getStart());
 				indb.setEnd(rental.getEnd());
