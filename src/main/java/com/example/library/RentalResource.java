@@ -178,6 +178,19 @@ public class RentalResource {
 		
 	}
 
+	@Path("/user/{customerid}")
+	@DELETE
+	public void deleteUserAll(@PathParam("customerid") String customerid){
+		Collection<Rental> userRentals = null;
+		Search searchObject = dbRentals.search("RentalIdx/customerSearch");
+		userRentals = searchObject.includeDocs(true).query(customerid, Rental.class);
+		for(Rental temp : userRentals){
+			dbRentals.remove(temp);
+			System.out.println("Rental "+temp.getId()+" has been deleted.");
+		}
+	}
+	
+	
 	@DELETE
 	public void deleteAll(){
 	   	try {
