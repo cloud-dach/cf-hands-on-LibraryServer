@@ -70,7 +70,7 @@ public class RentalResource {
 				//System.out.println("uri customer: "+uricustomer.toString());
 				String startFormat = dt.format(current.getStart());
 				String endFormat = dt.format(current.getEnd());
-				RentalShow temp = new RentalShow(current.getId(),uribook.toString(),uricustomer.toString(),startFormat,endFormat);
+				RentalShow temp = new RentalShow(current.getId(),current.getBookid(),uricustomer.toString(),startFormat,endFormat);
 				toShow[i]=temp;
 				i++;
 			}
@@ -104,7 +104,7 @@ public class RentalResource {
 			//System.out.println("uri customer: "+uricustomer.toString());
 			String startFormat = dt.format(current.getStart());
 			String endFormat = dt.format(current.getEnd());
-			RentalShow temp = new RentalShow(current.getId(),uribook.toString(),uricustomer.toString(),startFormat,endFormat);
+			RentalShow temp = new RentalShow(current.getId(),current.getBookid(),uricustomer.toString(),startFormat,endFormat);
 			toShow[i]=temp;
 			i++;
 		}
@@ -123,7 +123,7 @@ public class RentalResource {
 					+ myrental.getCustomerid());  
 			String startFormat = dt.format(myrental.getStart());
 			String endFormat = dt.format(myrental.getEnd());
-		    RentalShow forshow = new RentalShow(id,uribook.toString(),uricustomer.toString(),startFormat,endFormat);
+		    RentalShow forshow = new RentalShow(id,myrental.getBookid(),uricustomer.toString(),startFormat,endFormat);
 			return forshow;
 		}	
 		else{
