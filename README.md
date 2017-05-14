@@ -1,4 +1,7 @@
 # Library server
+
+**These instructions are not up to date.**
+
 This is the first part of the Library Application:
 [https://github.com/florae123/LibraryApp](https://github.com/florae123/LibraryApp).
 
