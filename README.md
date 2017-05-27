@@ -1,7 +1,5 @@
 # Library server
 
-**These instructions are not up to date.**
-
 This is the first part of the Library Application:
 [https://github.com/florae123/LibraryApp-user](https://github.com/florae123/LibraryApp-user).
 
