@@ -3,11 +3,11 @@
 **These instructions are not up to date.**
 
 This is the first part of the Library Application:
-[https://github.com/florae123/LibraryApp](https://github.com/florae123/LibraryApp).
+[https://github.com/florae123/LibraryApp-user](https://github.com/florae123/LibraryApp-user).
 
 It is a java server for the Library app and requires a Cloudant NoSQL Database.
 
-![architecture](./images/lib-architecture-java.jpg)
+![architecture](./images/app-architecture-java.png)
 
 ## Prerequisites
 
@@ -24,7 +24,7 @@ Another requirement is an IBM Bluemix Account.
 1. Clone the app to your local environment from your terminal using the following command
 
       ```
-      git clone https://github.com/florae123/library-server-java.git
+      git clone https://github.com/florae123/library-server-java-user-adjusted.git
       ```
 
     and change into the newly created directory *library-server-java*.
@@ -122,7 +122,14 @@ The App requires three databases in your Cloudant service.
     There is no **"_rev"** attribute included in the sample json data.
     This is because the *"_rev"* attribute has to be excluded from new data that is added to a database. The Cloudant service will automatically generate the attribute-value pair *"_rev"*.
 
-    In order for the app to be able to properly search this database, create a new search index and a new view in "books" by clicking the **"+"** sign next to "Design Documents" on the "books" database view in your Cloudant dashboard.
+    In order for the app to be able to properly search this database, create a new search index and two new views in "books".
+    To do this:
+    * Click the **+** sign next to **All Documents**
+    * Select **New Doc**, delete the default *{ "id_": "..." }*
+    * Copy the text from the file **cloudant-design-docs/cloudant-design-doc-books.json** into the document.
+    * Click **Create Document**.
+
+    **Alternatively, create the design document manually:** Click the **"+"** sign next to "Design Documents" on the "books" database view in your Cloudant dashboard.
 
     ![NewSearchIndex](./images/new-search-index.png)
 
@@ -158,6 +165,19 @@ The App requires three databases in your Cloudant service.
 
     ![View](./images/tag-view.png)
 
+    Create another view an configure it like this:
+
+    * **Design Document Name:**  BookIdx
+    * **View Index Name:**  authorsView
+    * **Code for the view:**
+      ```
+      function (doc) {
+        var i;
+        for(i in doc.authors)
+           emit(doc.authors[i], doc._id);
+      }
+      ```
+
 2. Create a database called **"customers"**. A customer will be saved as a JSON in the following format:
 
       ```
@@ -170,6 +190,11 @@ The App requires three databases in your Cloudant service.
     	  "id": "must be the same as _id"
     	}
       ```
+      Add a search index like this:
+      * Click the **+** sign next to **All Documents**
+      * Select **New Doc**, delete the default *{ "id_": "..." }*
+      * Copy the text from the file **cloudant-design-docs/cloudant-design-doc-customers.json** into the document.
+      * Click **Create Document**.
 
 3. Create a database called **"rentals"**. Whenever a book is borrowed, it is registered in "rentals". A rental will be saved as a JSON in the following format:
 
@@ -184,6 +209,11 @@ The App requires three databases in your Cloudant service.
         "end": "May 4, 2017 12:00:00 AM"
       }
       ```
+      Add a search index like this:
+      * Click the **+** sign next to **All Documents**
+      * Select **New Doc**, delete the default *{ "id_": "..." }*
+      * Copy the text from the file **cloudant-design-docs/cloudant-design-doc-rentals.json** into the document.
+      * Click **Create Document**.
 
 ## Test your running application
 

@@ -3,6 +3,9 @@
   "views": {
     "tagView": {
       "map": "function (doc) {\r\n  var i;\r\n  for(i in doc.tags)\r\n     emit(doc.tags[i], doc._id);\r\n}"
+    },
+    "authorsView": {
+      "map": "function (doc) {\r\n  var i;\r\n  for(i in doc.authors)\r\n     emit(doc.authors[i], doc._id);\r\n}"
     }
   },
   "language": "javascript",
