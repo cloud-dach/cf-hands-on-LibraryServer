@@ -136,6 +136,30 @@ public class BookResource {
 		return list;
 	}
 	
+	@Path("/author/{author}")
+	@GET
+	public List<Book> getBooksByAuthor(@PathParam("author") String author){
+		initDatabase();
+		List<Book> list = null;
+		ViewRequestBuilder viewBuilder = datab.getViewRequestBuilder("BookIdx", "authorsView");
+		try {
+			ViewRequest<String, String> request = viewBuilder.newRequest(Key.Type.STRING,String.class).reduce(false)
+					  .keys(author)
+				 	  //.limit(10)
+				 	  .includeDocs(true)
+				 	  .build();
+			list = request.getResponse().getDocsAs(Book.class);
+			for(Book temp : list){
+				System.out.println("Book "+temp.getTitle()+" has author "+author);
+			}
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
 	
 	
 	@Path("/{id}")
