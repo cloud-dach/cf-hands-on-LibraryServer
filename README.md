@@ -17,6 +17,19 @@ The software needed for the following steps:
 
 Another requirement is an IBM Bluemix Account.
 
+## Install the Cloud Foundry CLI
+
+If the Cloud Foundry Command Line Interface is not yet installed on your maschine, use the following commands to install it (for Ubuntu based Linux distributions):
+
+```
+# ...first add the Cloud Foundry Foundation public key and package repository to your system
+wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | sudo apt-key add -
+echo "deb http://packages.cloudfoundry.org/debian stable main" | sudo tee /etc/apt/sources.list.d/cloudfoundry-cli.list
+# ...then, update your local package index, then finally install the cf CLI
+sudo apt-get update
+sudo apt-get install cf-cli
+```
+
 ## Deploy to Bluemix
 
 1. Clone the app to your local environment from your terminal using the following command
