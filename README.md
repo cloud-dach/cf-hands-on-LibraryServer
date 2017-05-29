@@ -19,7 +19,7 @@ Another requirement is an IBM Bluemix Account.
 
 ## Install the Cloud Foundry CLI
 
-If the Cloud Foundry Command Line Interface is not yet installed on your maschine, use the following commands to install it (for Ubuntu based Linux distributions):
+If the Cloud Foundry Command Line Interface is not yet installed on your machine, use the following commands to install it (for Ubuntu based Linux distributions):
 
 ```
 # ...first add the Cloud Foundry Foundation public key and package repository to your system
