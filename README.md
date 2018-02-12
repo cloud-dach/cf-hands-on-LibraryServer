@@ -57,7 +57,7 @@ sudo apt-get install cf-cli
 3.  Verify your "Bluemix endpoint api", for example
     * US https://api.ng.bluemix.net or
     * EU-GB https://api.eu-gb.bluemix.net
-
+    * Your can verfiy your endpoint here: https://console.bluemix.net/docs/containers/cs_regions.html#regions-and-locations
 
 
      ```
