@@ -70,11 +70,12 @@ sudo apt-get install cf-cli
       ```
 
 5. Push the app to Bluemix using the cf cli command
+
       ```
       cf push library-server -p target/library-server-java.war
       ```
 
-      Instead of *library-server*, use your own unique name for the app.
+      **!! ATTENTION !!**: Instead of **library-server**, use your **own unique name** for the app.
 
       As soon as the application is running, test it by clicking on the url. (See [Test your running application](#test-your-running-application)).
 6. Create an instance of the Cloudant NoSQL DB Service on Bluemix and connect it to your app.
