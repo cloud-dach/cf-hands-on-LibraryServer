@@ -99,7 +99,7 @@ Create an instance of a cloudant database on Bluemix, in the same space you were
 * Go back to the **Manage** panel and click **Launch**.
     ![launch](./images/cloudant-launch.png)
 
-The App requires three databases in your Cloudant service.
+The App requires three databases **"books"**, **"customers"** and **"rentals"** in your Cloudant service.
 
 1. Create a database called **"books"**.
 
