@@ -99,7 +99,14 @@ Create an instance of a cloudant database on Bluemix, in the same space you were
 * Go back to the **Manage** panel and click **Launch**.
     ![launch](./images/cloudant-launch.png)
 
-The App requires three databases **"books"**, **"customers"** and **"rentals"** in your Cloudant service.
+The App requires three databases in your Cloudant service.
+* **"books"**
+* **"customers"**
+* **"rentals"**
+
+_NOTE:_
+* If you are familiar with Cloudant. You can configure each database by using the design document here: https://github.com/thomassuedbroecker/library-server-java-v2/tree/master/cloudant-design-docs
+* Create the books using this content: https://github.com/thomassuedbroecker/library-server-java-v2/tree/master/sample-books
 
 1. Create a database called **"books"**.
 
