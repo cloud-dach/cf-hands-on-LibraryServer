@@ -7,6 +7,10 @@ It is a java server for the Library app and requires a Cloudant NoSQL Database.
 
 ![architecture](./images/app-architecture-java.png)
 
+Watch the video on **YouTube** for further information about this application.
+
+_Note:_ That the video refers to an older version of the demo app https://www.youtube.com/watch?v=NqF2wIMBqBw.
+
 ## Prerequisites
 
 The software needed for the following steps:
