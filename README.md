@@ -1,7 +1,7 @@
 # Library server
 
 This is the first part of the Library Application:
-[https://github.com/florae123/LibraryApp-user](https://github.com/florae123/LibraryApp-user).
+[https://github.com/cloud-dach/cf-hands-on-library](https://github.com/cloud-dach/cf-hands-on-library).
 
 It is a java server for the Library app and requires a Cloudant NoSQL Database.
 
@@ -35,7 +35,7 @@ sudo apt-get install cf-cli
 1. Clone the app to your local environment from your terminal using the following command
 
       ```
-      git clone https://github.com/florae123/library-server-java-user-adjusted.git
+      git clone https://github.com/cloud-dach/cf-hands-on-LibraryServer.git
       ```
 
     and change into the newly created directory *library-server-java*.
@@ -105,8 +105,8 @@ The App requires three databases in your Cloudant service.
 * **"rentals"**
 
 _NOTE:_
-* If you are familiar with Cloudant. You can configure each database by using the design document here: https://github.com/thomassuedbroecker/library-server-java-v2/tree/master/cloudant-design-docs
-* Create the books using this content: https://github.com/thomassuedbroecker/library-server-java-v2/tree/master/sample-books
+* If you are familiar with Cloudant. You can configure each database by using the design document here: https://github.com/cloud-dach/cf-hands-on-LibraryServer/tree/master/cloudant-design-docs
+* Create the books using this content: https://github.com/cloud-dach/cf-hands-on-LibraryServer/tree/master/sample-books
 
 1. Create a database called **"books"**.
 
@@ -236,7 +236,7 @@ _NOTE:_
 
 ## Test your running application
 
-* Open the server application you just deployed to Bluemix, e.g. running on    **https://libraryserver-myname.eu-gb.mybluemix.net**.
+* Open the server application you just deployed to Bluemix, e.g. running on    **https://libraryserver-MYNAME.eu-gb.mybluemix.net**.
 
     The text **"... Library Backend Server is running ..."** should be displayed in your browser.
 
